@@ -117,7 +117,7 @@
         }
       }
     },
-    "mat-loading-bar": {
+    "@mrbatista/mat-loading-bar": {
       "root": "packages/loading-bar",
       "sourceRoot": "packages/loading-bar/src",
       "projectType": "library",
@@ -158,10 +158,10 @@
       }
     }
   },
-	"defaultProject": "ngx-material-components",
-	"schematics": {
-		"@schematics/angular:component": {
-			"styleext": "sass"
-		}
-	}
+  "defaultProject": "ngx-material-components",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "sass"
+    }
+  }
 }

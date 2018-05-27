@@ -1,9 +1,15 @@
 {
   "name": "@mrbatista/mat-loading-bar",
 	"version": "0.0.0",
+	"scripts": {
+		"postversion": "ng build @mrbatista/mat-loading-bar --prod"
+	},
 	"publishConfig": {
     "access": "public"
-  },
+	},
+	"files": [
+		"dist"
+	],
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
 		"@angular/core": "^6.0.0-rc.0 || ^6.0.0",

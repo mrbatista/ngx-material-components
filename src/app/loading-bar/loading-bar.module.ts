@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoadingBarComponent } from './loading-bar.component';
-import { MatLoadingBarModule } from 'mat-loading-bar';
+import { MatLoadingBarModule } from '@mrbatista/mat-loading-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
