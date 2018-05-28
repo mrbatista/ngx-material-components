@@ -1,6 +1,6 @@
 {
 	"name": "@mrbatista/mat-loading-bar",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"scripts": {
 		"postversion": "ng build @mrbatista/mat-loading-bar --prod"
 	},
