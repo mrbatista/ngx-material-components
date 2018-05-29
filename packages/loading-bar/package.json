@@ -2,8 +2,7 @@
 	"name": "@mrbatista/mat-loading-bar",
 	"version": "0.1.6",
 	"scripts": {
-		"postversion": "ng build @mrbatista/mat-loading-bar --prod",
-		"prepublish": "cd ../../dist/mat-loading-bar"
+		"postversion": "ng build @mrbatista/mat-loading-bar --prod && cd ../../dist/mat-loading-bar && npm publish"
 	},
 	"publishConfig": {
 		"access": "public"
