@@ -1,27 +1,24 @@
-# NgxLoadingBarProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+The idea of the [NGX Material Components]() is to provide components that aren't available in the [Angular Material2](https://material.angular.io) yet.
 
-## Development server
+All the components are created using just [Angular](https://angular.io), [Material 2](https://material.angular.io) and [CDK](https://material.angular.io/cdk).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Components Status
 
-## Code scaffolding
+All the components have the prefix `mat` followed by the package name.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Component       | Status    | package          |
+| --------------- | --------- | ---------------- |
+| Loading Bar     | Available | mat-loading-bar  |
+| Spinner Bar     | ---       | ---              |
+| Navigation Menu | ---       | ---              |
 
-## Build
+If you miss any component, please follow the [CONTRIBUTION GUIDELINE](CONTRIBUTING.md) to open an issue.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## How to use
 
-## Running unit tests
+For more examples, you can see our [app](https://github.com/mrbatista/ngx-material-components/blob/master/src/app) folder
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[MIT](LICENSE)
