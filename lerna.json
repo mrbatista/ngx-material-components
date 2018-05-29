@@ -3,9 +3,11 @@
   "packages": [
     "packages/*"
 	],
-	"publish": {
-		"conventionalCommits": true,
-		"message": "chore: publish release"
+	"command": {
+		"publish": {
+			"conventionalCommits": true,
+			"message": "chore: publish release"
+		}
 	},
 	"version": "independent"
 }
