@@ -18,7 +18,7 @@
     ],
     "paths": {
       "@mrbatista/mat-loading-bar": [
-        "packages/loading-bar/dist"
+        "dist/mat-loading-bar"
       ]
     }
   }
