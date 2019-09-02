@@ -5,7 +5,7 @@ import { delay } from 'rxjs/operators';
 @Component({
 	selector: 'app-loading-bar',
 	templateUrl: './loading-bar.component.html',
-	styleUrls: ['./loading-bar.component.sass']
+	styleUrls: ['./loading-bar.component.scss']
 })
 export class LoadingBarComponent {
 

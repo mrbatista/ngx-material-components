@@ -1,0 +1,35 @@
+<ng-container>
+  <input matInput #autocompleteInput="matInput"
+         *ngIf="formControl"
+         [placeholder]="placeholder"
+         [formControl]="formControl"
+         [matAutocomplete]="autocomplete"
+         [matAutocompleteConnectedTo]="autocompleteConnectedTo"
+         (keyup)="onKey($event)"
+         (focus)="onFocus()">
+  <input matInput #autocompleteInput="matInput"
+         *ngIf="!formControl"
+         [placeholder]="placeholder"
+         [matAutocomplete]="autocomplete"
+         [matAutocompleteConnectedTo]="autocompleteConnectedTo"
+         (keyup)="onKey($event)"
+         (focus)="onFocus()">
+  <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+  <mat-autocomplete #autocomplete="matAutocomplete"
+                    [displayWith]="autocompleteDisplayFn"
+                    (optionSelected)="autocompleteSelected($event)">
+    <mat-option *ngFor="let item of autocompleteList" [value]="item">
+      <ng-template [ngIf]="displayTemplate">
+        <ng-container *ngTemplateOutlet="displayTemplate; context: {$implicit: item}"></ng-container>
+      </ng-template>
+      <span *ngIf="!displayTemplate">{{ viewItem(item) }}</span>
+    </mat-option>
+    <mat-option *ngIf="showOptionNoSuggestions" disabled>
+      <span>{{ noSuggestionsText }}</span>
+    </mat-option>
+    <mat-option *ngIf="showOptionCreateNew" (click)="onCreateNew($event)">
+      <mat-icon>add</mat-icon>
+      <span> {{ addNewText }} </span>
+    </mat-option>
+  </mat-autocomplete>
+</ng-container>

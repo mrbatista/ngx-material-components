@@ -1,0 +1,44 @@
+<div class="container">
+  <div>
+    <h2>Local data:</h2>
+    <mat-card>
+      <div class="mat-form-flex" fxLayout="row" fxLayoutGap="16px">
+        <mat-form-field >
+          <mat-label>Default template</mat-label>
+          <mat-search-autocomplete [formControl]="ctrl" [source]="items" [minChars]="0">
+          </mat-search-autocomplete>
+          <button *ngIf="ctrl.value" mat-button mat-icon-button matSuffix (click)="clear()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Custom template</mat-label>
+          <mat-search-autocomplete [source]="items" [displayItemFn]="displayItemFn" required>
+          </mat-search-autocomplete>
+        </mat-form-field>
+      </div>
+    </mat-card>
+  </div>
+
+  <div>
+    <h2>Remote data:</h2>
+    <mat-card>
+      <div class="mat-form-flex" fxLayout="row" fxLayoutGap="16px">
+        <mat-form-field>
+          <mat-label>Default template</mat-label>
+          <mat-search-autocomplete [formControl]="ctrl2" [source]="dataService" [minChars]="0">
+          </mat-search-autocomplete>
+          <button *ngIf="ctrl2.value" mat-button mat-icon-button matSuffix (click)="clear2()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Custom template</mat-label>
+          <mat-search-autocomplete [source]="dataService" [displayItemFn]="displayItemFn">
+          </mat-search-autocomplete>
+        </mat-form-field>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

@@ -18,8 +18,11 @@
     ],
     "paths": {
       "@mrbatista/mat-loading-bar": [
-        "dist/mat-loading-bar"
-      ]
+        "packages/loading-bar/dist"
+      ],
+      "@mrbatista/mat-search-autocomplete": [
+        "packages/search-autocomplete/dist"
+      ],
     }
   }
 }

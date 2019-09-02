@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -72,7 +72,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -156,12 +156,47 @@
           }
         }
       }
+    },
+    "@mrbatista/mat-search-autocomplete": {
+      "root": "packages/search-autocomplete",
+      "sourceRoot": "packages/search-autocomplete/src",
+      "projectType": "library",
+      "prefix": "mat",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/search-autocomplete/tsconfig.lib.json",
+            "project": "packages/search-autocomplete/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/search-autocomplete/src/test.ts",
+            "tsConfig": "packages/search-autocomplete/tsconfig.spec.json",
+            "karmaConfig": "packages/search-autocomplete/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/search-autocomplete/tsconfig.lib.json",
+              "packages/search-autocomplete/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-material-components",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "sass"
+      "styleext": "scss"
     }
   }
 }

@@ -4,12 +4,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { MatCheckboxModule, MatButtonModule, MatRadioModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { appRoutes } from './app.route';
 import { LoadingBarModule } from './loading-bar/loading-bar.module';
 import { HomeModule } from './home/home.module';
+import { SearchAutocompleteModule } from './autocomplete/search-autocomplete.module';
 
 @NgModule({
 	declarations: [
@@ -20,7 +18,8 @@ import { HomeModule } from './home/home.module';
 		BrowserAnimationsModule,
 		LoadingBarModule,
 		HomeModule,
-		RouterModule.forRoot(appRoutes)
+		RouterModule.forRoot(appRoutes),
+		SearchAutocompleteModule,
 	],
 	bootstrap: [AppComponent]
 })

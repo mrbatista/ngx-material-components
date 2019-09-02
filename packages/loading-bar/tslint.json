@@ -10,7 +10,7 @@
         "component-selector": [
             true,
             "element",
-						"mat",
+			"mat",
             "kebab-case"
         ]
     }
