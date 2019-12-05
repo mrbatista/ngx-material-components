@@ -5,14 +5,12 @@
          [formControl]="formControl"
          [matAutocomplete]="autocomplete"
          [matAutocompleteConnectedTo]="autocompleteConnectedTo"
-         (keyup)="onKey($event)"
          (focus)="onFocus()">
   <input matInput #autocompleteInput="matInput"
          *ngIf="!formControl"
          [placeholder]="placeholder"
          [matAutocomplete]="autocomplete"
          [matAutocompleteConnectedTo]="autocompleteConnectedTo"
-         (keyup)="onKey($event)"
          (focus)="onFocus()">
   <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
   <mat-autocomplete #autocomplete="matAutocomplete"

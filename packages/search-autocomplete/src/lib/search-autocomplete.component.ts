@@ -11,10 +11,10 @@ import {
 	DoCheck,
 	HostBinding,
 	Optional,
-	Self,
 	OnChanges,
 	AfterViewInit,
 	Host,
+	HostListener,
 } from '@angular/core';
 import { MatAutocomplete, MatAutocompleteOrigin, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormControl, ControlValueAccessor, NgControl } from '@angular/forms';
@@ -29,7 +29,7 @@ import { switchMap } from 'rxjs/internal/operators/switchMap';
 import { map } from 'rxjs/internal/operators/map';
 import { tap } from 'rxjs/internal/operators/tap';
 import { takeUntil, take } from 'rxjs/operators';
-import {DOWN_ARROW, LEFT_ARROW} from '@angular/cdk/keycodes';
+import {DOWN_ARROW, LEFT_ARROW, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
 	selector: 'mat-search-autocomplete',
@@ -360,9 +360,14 @@ export class MatSearchAutocompleteComponent implements OnInit, OnDestroy, OnChan
 		return (item: any) => item ? this.viewItem(item) : '';
 	}
 
-	public onKey($event: KeyboardEvent) {
+	@HostListener('keyup', ['$event'])
+	public onKeyUpEvent(event: KeyboardEvent) {
+
+		if (event.keyCode === ENTER) {
+			event.preventDefault();
+			event.stopImmediatePropagation();
 		// prevent filtering results if arrow were pressed
-		if ($event.keyCode < LEFT_ARROW || $event.keyCode > DOWN_ARROW) {
+		} else if (event.keyCode < LEFT_ARROW || event.keyCode > DOWN_ARROW) {
 			const { value } = this.autocompleteInput;
 			this.query = value;
 			this.noSuggestions = false;
@@ -381,7 +386,8 @@ export class MatSearchAutocompleteComponent implements OnInit, OnDestroy, OnChan
 				this.stateChanges.next();
 			}
 		} else {
-			$event.preventDefault();
+			event.preventDefault();
+			event.stopImmediatePropagation();
 		}
 	}
 
