@@ -20,7 +20,7 @@ import { MatAutocomplete, MatAutocompleteOrigin, MatAutocompleteSelectedEvent } 
 import { FormControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { Subject } from 'rxjs/internal/Subject';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { MatFormFieldControl, MatFormField } from '@angular/material/form-field';
 import { Observable } from 'rxjs';
 import { MatInput } from '@angular/material/input';
@@ -74,6 +74,8 @@ export class MatSearchAutocompleteComponent implements OnInit, OnDestroy, OnChan
 	_required = false;
 
 	_disabled = false;
+
+	_debounce = 250;
 
 	focused: boolean;
 
@@ -191,6 +193,15 @@ export class MatSearchAutocompleteComponent implements OnInit, OnDestroy, OnChan
 		this.stateChanges.next();
 	}
 
+	@Input()
+	get debounce() {
+		return this._debounce;
+	}
+	set debounce(debounce) {
+		this._debounce = coerceNumberProperty(debounce);
+		this.stateChanges.next();
+	}
+
 	get showOptionCreateNew(): boolean {
 		return this.query && this.noSuggestions && this.showAddNew;
 	}
@@ -294,7 +305,7 @@ export class MatSearchAutocompleteComponent implements OnInit, OnDestroy, OnChan
 	registerFetchRemoteData(): void {
 		this._valueChanges
 		.pipe(
-			debounceTime(100),
+			debounceTime(this._debounce),
 			switchMap(value => this.fetch(value)),
 			map((result) => this.transformResult(result)))
 		.subscribe(result => {
