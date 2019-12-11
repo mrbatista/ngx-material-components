@@ -16,7 +16,7 @@
   <mat-autocomplete #autocomplete="matAutocomplete"
                     [displayWith]="autocompleteDisplayFn"
                     (optionSelected)="autocompleteSelected($event)">
-    <mat-option *ngFor="let item of autocompleteList" [value]="item">
+    <mat-option *ngFor="let item of autocompleteList | async" [value]="item">
       <ng-template [ngIf]="displayTemplate">
         <ng-container *ngTemplateOutlet="displayTemplate; context: {$implicit: item}"></ng-container>
       </ng-template>

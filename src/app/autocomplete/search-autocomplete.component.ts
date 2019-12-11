@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { DataService } from './search-autcomplete.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-search-autocomplete',
 	templateUrl: './search-autocomplete.component.html',
-	styleUrls: ['./search-autocomplete.component.scss']
+	styleUrls: ['./search-autocomplete.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchAutocompleteComponent implements OnInit {
 
 	ctrl = new FormControl();
-	ctrl2 = new FormControl();
+
+	ctrl2 = new FormControl(undefined, Validators.required);
+
+	disableAutocompleteCtrl = new FormControl();
+
+	readonly _destroy = new Subject<void>();
 
 	items = [
 		{ name: 'Afghanistan', code: 'AF' },
@@ -25,15 +33,16 @@ export class SearchAutocompleteComponent implements OnInit {
 		{ name: 'Antigua and Barbuda', code: 'AG' },
 	];
 
-	service: DataService;
-
 	displayItemFn = (item: any) => `name: ${item.name} | code: ${item.code}`;
 
-	constructor(private readonly dataService: DataService) { }
+	constructor(readonly dataService: DataService) { }
 
 	ngOnInit(): void {
-		this.service = this.dataService;
-
+		this.disableAutocompleteCtrl.valueChanges
+			.pipe(takeUntil(this._destroy))
+			.subscribe({
+				next: value => value ? this.ctrl.disable() : this.ctrl.enable(),
+			});
 	}
 
 	clear(): void {

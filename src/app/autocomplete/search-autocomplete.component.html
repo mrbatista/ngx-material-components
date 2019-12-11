@@ -2,20 +2,27 @@
   <div>
     <h2>Local data:</h2>
     <mat-card>
-      <div class="mat-form-flex" fxLayout="row" fxLayoutGap="16px">
-        <mat-form-field >
-          <mat-label>Default template</mat-label>
-          <mat-search-autocomplete [formControl]="ctrl" [source]="items" [minChars]="0">
-          </mat-search-autocomplete>
-          <button *ngIf="ctrl.value" mat-button mat-icon-button matSuffix (click)="clear()">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Custom template</mat-label>
-          <mat-search-autocomplete [source]="items" [displayItemFn]="displayItemFn" required>
-          </mat-search-autocomplete>
-        </mat-form-field>
+      <div fxLayout="row" fxLayoutGap="16px">
+        <div class="mat-form-container" fxLayout="row" fxFlex>
+          <div fxLayout="column">
+            <mat-form-field>
+              <mat-label>Default template</mat-label>
+              <mat-search-autocomplete [formControl]="ctrl" [source]="items" [minChars]="0">
+              </mat-search-autocomplete>
+              <button *ngIf="ctrl.value" mat-button mat-icon-button matSuffix (click)="clear()">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-checkbox [formControl]="disableAutocompleteCtrl">Disable autocomplete</mat-checkbox>
+          </div>
+        </div>
+        <div class="mat-form-container" fxLayout="row" fxFlex>
+          <mat-form-field>
+            <mat-label>Custom template</mat-label>
+            <mat-search-autocomplete [source]="items" [displayItemFn]="displayItemFn" required>
+            </mat-search-autocomplete>
+          </mat-form-field>
+        </div>
       </div>
     </mat-card>
   </div>
@@ -23,7 +30,7 @@
   <div>
     <h2>Remote data:</h2>
     <mat-card>
-      <div class="mat-form-flex" fxLayout="row" fxLayoutGap="16px">
+      <div class="mat-form-container" fxLayout="row" fxLayoutGap="16px">
         <mat-form-field>
           <mat-label>Default template</mat-label>
           <mat-search-autocomplete [formControl]="ctrl2" [source]="dataService" [minChars]="0">
