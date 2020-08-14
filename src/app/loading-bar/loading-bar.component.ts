@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { of } from 'rxjs';
+import { Component } from '@angular/core';
+import { of, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -9,18 +9,17 @@ import { delay } from 'rxjs/operators';
 })
 export class LoadingBarComponent {
 
-	@Input() showAlways = true;
-	@Input() backdrop: boolean;
-	@Input() color = 'primary';
-	@Input() loader: any;
-	@Input() fixed: boolean;
+	showAlways = true;
+	backdrop: boolean;
+	color = 'primary';
+	loader: Promise<any> | Observable<any>;
 
 	promise() {
 		this.loader = new Promise(resolve => setTimeout(() => resolve(), 2000));
 	}
 
-	subscription() {
-		this.loader = of('string').pipe(delay(2000)).subscribe();
+	observable() {
+		this.loader = of('string').pipe(delay(2000));
 	}
 
 }

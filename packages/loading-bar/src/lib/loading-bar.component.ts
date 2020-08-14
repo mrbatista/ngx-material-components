@@ -1,17 +1,19 @@
-import { Component, Input, OnDestroy, OnInit, HostBinding } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
+import { Component, Input, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Subscription, Observable, Subject } from 'rxjs';
 import { trigger, transition, animate, style } from '@angular/animations';
 
 @Component({
 	selector: 'mat-loading-bar',
-	template: `
-    <ng-container *ngIf="showAlways || active">
-			<mat-progress-bar [ngClass]="{ 'active': active, 'fixed': fixed }"
-				[color]="color" [mode]="mode"></mat-progress-bar>
-			<div class="mat-loading-backdrop" *ngIf="includeBackdrop && active" @fadeInOut></div>
-		</ng-container>
+  template: `
+    <div class="mat-loading-bar-container">
+      <ng-container *ngIf="showAlways || (active$ | async)">
+        <mat-progress-bar [ngClass]="{ 'active': active$ | async }"
+          [color]="color" [mode]="mode"></mat-progress-bar>
+        <div class="mat-loading-bar-backdrop" *ngIf="backdrop && active$ | async" @fadeInOut></div>
+      </ng-container>
+    </div>
 	`,
-	styleUrls: ['./loading-bar.sass'],
+  styleUrls: ['./loading-bar.scss'],
 	animations: [
 		trigger('fadeInOut', [
 			transition('void => *', [
@@ -26,23 +28,22 @@ import { trigger, transition, animate, style } from '@angular/animations';
 				}))
 			])
 		])
-	]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class MatLoadingBarComponent {
-	@Input() fixed = false;
-	@Input() showAlways = true;
-	@Input() includeBackdrop = false;
-	@Input() color;
+export class MatLoadingBarComponent implements OnDestroy {
+	@Input() showAlways = false;
+	@Input() backdrop = false;
+	@Input() color = 'primary';
 
-	active: boolean;
+	active$ = new Subject<boolean>();
 	mode: progressBarMode = 'determinate';
-	promise: any;
+	subscription: Subscription;
 
 	@Input()
 	set loader(value: any) {
 		const isObservable: boolean = value instanceof Observable;
-		const isSubscription: boolean = value instanceof Subscription;
 		const isPromise: boolean = value instanceof Promise || (
 			value !== null &&
 			typeof value === 'object' &&
@@ -51,46 +52,49 @@ export class MatLoadingBarComponent {
 		);
 
 		if (isObservable) {
-			throw new TypeError('loader must be an instance of Subscription, instance of Observable given');
-		} else if (isSubscription) {
-			this.promise = new Promise((resolve) => {
-				(value as Subscription).add(resolve);
-			});
+			this.initObservableHandler(value);
 		} else if (isPromise) {
-			this.promise = value;
+			this.initPromiseHandler(value);
 		}
+	}
 
-		if (this.promise) {
-			this.initPromiseHandler();
+	ngOnDestroy(): void {
+		if (this.subscription) {
+			this.subscription.unsubscribe();
 		}
 	}
 
 	initLoadingState(): void {
-		this.active = true;
+		this.active$.next(true);
 		this.mode = 'indeterminate';
 	}
 
-	cancelLoadingStateIfPromiseDone(): void {
-		this.active = false;
+	cancelLoadingState(): void {
+		this.active$.next(false);
 		this.mode = 'determinate';
 	}
 
-	initPromiseHandler() {
-		const promise = this.promise;
-
-		const resolveLoadingState = () => this.cancelLoadingStateIfPromiseDone();
+	initPromiseHandler(promise: Promise<any>): void {
+		const resolveLoadingState = () => this.cancelLoadingState();
 
 		this.initLoadingState();
 
-		// native Promise doesn't have finally
-		if (promise.finally) {
-			promise.finally(resolveLoadingState);
-		} else {
-			promise
-				.then(resolveLoadingState)
-				.catch(resolveLoadingState);
-		}
+		promise
+			.then(resolveLoadingState)
+			.catch(resolveLoadingState);
 
+	}
+
+	initObservableHandler(observable: Observable<any>): void {
+    this.initLoadingState();
+		this.subscription = observable.subscribe({
+			next: () => this.cancelLoadingState(),
+			error: () => this.cancelLoadingState(),
+			complete: () => {
+				this.cancelLoadingState();
+				this.subscription.unsubscribe();
+			},
+		});
 	}
 }
 

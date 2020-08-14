@@ -1,4 +1,4 @@
-<mat-loading-bar [loader]="loader" [showAlways]="showAlways" [fixed]="fixed" [color]="color" [includeBackdrop]="backdrop"></mat-loading-bar>
+<mat-loading-bar [loader]="loader" [showAlways]="showAlways"  [color]="color" [backdrop]="backdrop"></mat-loading-bar>
 <div style="text-align:center">
 	<h1>
 		Welcome to MatLoadingBar demo!
@@ -12,14 +12,13 @@
 		<button mat-raised-button (click)="promise()">
 			Start promise
 		</button>
-		<button mat-raised-button (click)="subscription()">
-			Start subscription
+		<button mat-raised-button (click)="observable()">
+			Start observable
 		</button>
 	</div>
 	<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
 		<mat-checkbox [(ngModel)]="backdrop">Backdrop</mat-checkbox>
 		<mat-checkbox [(ngModel)]="showAlways">Show always</mat-checkbox>
-		<mat-checkbox [(ngModel)]="fixed">Fixed</mat-checkbox>
 	</div>
 	<mat-radio-group [(ngModel)]="color" fxLayoutGap="24px">
 		<mat-radio-button value="primary">primary</mat-radio-button>
