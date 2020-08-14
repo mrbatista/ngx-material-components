@@ -128,11 +128,6 @@
           "options": {
             "tsConfig": "packages/loading-bar/tsconfig.lib.json",
             "project": "packages/loading-bar/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "packages/loading-bar/ng-package.prod.json"
-            }
           }
         },
         "test": {
