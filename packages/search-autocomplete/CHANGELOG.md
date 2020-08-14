@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-search-autocomplete@0.6.1...@mrbatista/mat-search-autocomplete@0.6.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* **search-autocomplete:** remove wrong rxjs import ([805ebe8](https://github.com/mrbatista/ngx-material-components/commit/805ebe8324dbd6e6222acf3436ac561523480030))
+
+
+
+
+
 ## [0.6.1](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-search-autocomplete@0.6.0...@mrbatista/mat-search-autocomplete@0.6.1) (2020-08-14)
 
 
