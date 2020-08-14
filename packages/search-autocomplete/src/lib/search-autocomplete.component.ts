@@ -21,11 +21,10 @@ import {
 } from '@angular/core';
 import { MatAutocomplete, MatAutocompleteOrigin, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormControl, ControlValueAccessor, NgControl, NgForm, FormGroupDirective } from '@angular/forms';
-import { Subject } from 'rxjs/internal/Subject';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { MatFormFieldControl, MatFormField } from '@angular/material/form-field';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MatInput } from '@angular/material/input';
 import { takeUntil, take, debounceTime, switchMap, map, tap } from 'rxjs/operators';
 import { DOWN_ARROW, LEFT_ARROW, ENTER, TAB } from '@angular/cdk/keycodes';
