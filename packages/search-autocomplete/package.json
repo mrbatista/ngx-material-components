@@ -8,9 +8,9 @@
     "postversion": "ng build @mrbatista/mat-search-autocomplete"
   },
   "peerDependencies": {
-    "@angular/cdk": "^8.0.0",
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/material": "^8.0.0"
+    "@angular/cdk": "^8.0.0 | ^9.0.0",
+    "@angular/common": "^8.0.0 | ^9.0.0",
+    "@angular/core": "^8.0.0 | ^9.0.0",
+    "@angular/material": "^8.0.0 | ^9.0.0"
   }
 }

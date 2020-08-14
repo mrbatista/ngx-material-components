@@ -27,11 +27,7 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
 import { MatFormFieldControl, MatFormField } from '@angular/material/form-field';
 import { Observable } from 'rxjs';
 import { MatInput } from '@angular/material/input';
-import { debounceTime } from 'rxjs/internal/operators/debounceTime';
-import { switchMap } from 'rxjs/internal/operators/switchMap';
-import { map } from 'rxjs/internal/operators/map';
-import { tap } from 'rxjs/internal/operators/tap';
-import { takeUntil, take } from 'rxjs/operators';
+import { takeUntil, take, debounceTime, switchMap, map, tap } from 'rxjs/operators';
 import { DOWN_ARROW, LEFT_ARROW, ENTER, TAB } from '@angular/cdk/keycodes';
 import { ErrorStateMatcher, CanUpdateErrorStateCtor, mixinErrorState, CanUpdateErrorState } from '@angular/material/core';
 import { Platform } from '@angular/cdk/platform';
