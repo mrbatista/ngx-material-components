@@ -1,13 +1,13 @@
-import { LoadingBarModule } from './loading-bar.module';
+import { LoadingBarModule } from "./loading-bar.module";
 
-describe('LoadingBarModule', () => {
-	let loadingBarModule: LoadingBarModule;
+describe("LoadingBarModule", () => {
+  let loadingBarModule: LoadingBarModule;
 
-	beforeEach(() => {
-		loadingBarModule = new LoadingBarModule();
-	});
+  beforeEach(() => {
+    loadingBarModule = new LoadingBarModule();
+  });
 
-	it('should create an instance', () => {
-		expect(loadingBarModule).toBeTruthy();
-	});
+  it("should create an instance", () => {
+    expect(loadingBarModule).toBeTruthy();
+  });
 });
