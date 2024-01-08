@@ -6,11 +6,14 @@
 	},
 	"scripts": {
 		"postversion": "ng build @mrbatista/mat-loading-bar"
-	},
-	"peerDependencies": {
-		"@angular/cdk": "^8.0.0 | ^9.0.0",
-		"@angular/common": "^8.0.0 | ^9.0.0",
-		"@angular/core": "^8.0.0 | ^9.0.0",
-		"@angular/material": "^8.0.0 | ^9.0.0"
-	}
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/cdk": "^15.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/material": "^15.0.0"
+  }
 }

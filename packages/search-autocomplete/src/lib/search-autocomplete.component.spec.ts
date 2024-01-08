@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { MatSearchAutocompleteComponent } from './search-autocomplete.component';
+import { MatSearchAutocompleteComponent } from "./search-autocomplete.component";
 
-describe('MatSearchAutocompleteComponent', () => {
-	let component: MatSearchAutocompleteComponent;
-	let fixture: ComponentFixture<MatSearchAutocompleteComponent>;
+describe("MatSearchAutocompleteComponent", () => {
+  let component: MatSearchAutocompleteComponent;
+  let fixture: ComponentFixture<MatSearchAutocompleteComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ MatSearchAutocompleteComponent ]
-		})
-		.compileComponents();
-	}));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [MatSearchAutocompleteComponent],
+    }).compileComponents();
+  }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(MatSearchAutocompleteComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+  beforeEach(() => {
+    fixture = TestBed.createComponent(MatSearchAutocompleteComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+  it("should create", () => {
+    expect(component).toBeTruthy();
+  });
 });
