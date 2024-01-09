@@ -7,11 +7,10 @@ All the components are created using just [Angular](https://angular.io), [Materi
 
 All the components have the prefix `mat` followed by the package name.
 
-| Component       | Status    | package          |
-| --------------- | --------- | ---------------- |
-| Loading Bar     | Available | mat-loading-bar  |
-| Spinner Bar     | ---       | ---              |
-| Navigation Menu | ---       | ---              |
+| Component           | Status    | package                 |
+| ------------------- | --------- | ----------------------- |
+| Loading Bar         | Available | mat-loading-bar         |
+| Search Autocomplete | Available | mat-searc-autocomplete  |
 
 If you miss any component, please follow the [CONTRIBUTION GUIDELINE](CONTRIBUTING.md) to open an issue.
 
