@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use '../packages/time-select/dist' as time-select;
+
 @import url('//fonts.googleapis.com/icon?family=Material+Icons');
 
 
@@ -17,12 +19,16 @@ $primary: mat.define-palette(mat.$purple-palette, 500);
 $accent:  mat.define-palette(mat.$lime-palette, 500, A200, A400);
 $warn:    mat.define-palette(mat.$red-palette, 500);
 
-$config: mat.define-legacy-typography-config();
+$typography: mat.define-legacy-typography-config();
+
+@include mat.typography-hierarchy($typography);
 
 
 $theme: mat.define-light-theme($primary, $accent, $warn);
 
 @include mat.all-legacy-component-themes($theme);
+
+@include time-select.mat-time-select-theme($theme);
 
 html,
 body {
@@ -32,7 +38,7 @@ body {
 }
 
 body {
-  font-family: mat.font-family($config);
+  font-family: mat.font-family($typography);
   font-weight: normal;
 }
 

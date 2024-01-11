@@ -1,0 +1,38 @@
+{
+  "name": "@mrbatista/mat-time-select",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "postversion": "ng build @mrbatista/mat-time-select"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "exports": {
+    ".": {
+      "sass": "./_index.scss"
+    },
+    "./prebuilt-themes/indigo-pink.css": {
+      "style": "./src/themes/indigo-pink.css"
+    },
+    "./prebuilt-themes/deeppurple-amber.css": {
+      "style": "./src/themes/deeppurple-amber.css"
+    },
+    "./prebuilt-themes/pink-bluegrey.css": {
+      "style": "./src/themes/pink-bluegrey.css"
+    },
+    "./prebuilt-themes/purple-green.css": {
+      "style": "./src/themes/purple-green.css"
+    }
+  },
+  "peerDependencies": {
+    "@angular/animations": "^15.0.0 || ^16.0.0",
+    "@angular/cdk": "^15.0.0 || ^16.0.0",
+    "@angular/common": "^15.0.0 || ^16.0.0",
+    "@angular/core": "^15.0.0 || ^16.0.0",
+    "@angular/material": "^15.0.0 || ^16.0.0",
+    "moment": "^2.24.0"
+  }
+}

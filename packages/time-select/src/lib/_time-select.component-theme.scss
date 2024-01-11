@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+
+$mat-calendar-body-font-size: 13px !default;
+
+@mixin _time-unit-option-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-time-unit-option {
+    color: mat.get-color-from-palette($foreground, text);
+
+    &.mat-time-unit-option-disabled {
+      color: mat.get-color-from-palette($foreground, hint-text);
+    }
+  }
+
+  .mat-primary {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat.get-color-from-palette($primary);
+    }
+  }
+
+  .mat-accent {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+
+  .mat-warn {
+    .mat-time-unit-option.mat-time-unit-option-selected:not(.mat-time-unit-option-disabled), .mat-time-unit-separator {
+      color: mat.get-color-from-palette($warn);
+    }
+  }
+}
+
+@mixin time-select-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-time-select-toggle,
+  .mat-time-select-content .mat-time-select-arrow {
+    color: mat.get-color-from-palette($foreground, icon);
+  }
+
+  .mat-time-select-content {
+    @include mat.elevation-transition();
+    @include mat.elevation(4);
+    background-color: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
+
+    @include _time-unit-option-theme($theme);
+  }
+
+  .mat-time-select-content-touch {
+    @include mat.elevation(0);
+  }
+
+  .mat-time-select-toggle-active {
+    color: mat.get-color-from-palette(map-get($theme, primary));
+
+    &.mat-accent {
+      color: mat.get-color-from-palette(map-get($theme, accent));
+    }
+
+    &.mat-warn {
+      color: mat.get-color-from-palette(map-get($theme, warn));
+    }
+  }
+}
+
+@mixin time-select-typography($config) {
+  .mat-time-select-table {
+    font-family: mat.font-family($config);
+
+    tbody {
+      font-size: 13px;
+    }
+
+    .mat-time-unit-option, .mat-time-unit-separator {
+      font: {
+        family: mat.font-family($config);
+        size: mat.font-size($config, subheading-2);
+      }
+    }
+  }
+}
