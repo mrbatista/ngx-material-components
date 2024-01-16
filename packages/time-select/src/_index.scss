@@ -1,0 +1,13 @@
+@import './lib/time-select.component-theme';
+
+@mixin mat-time-select-typography($config: null) {
+  @if $config == null {
+    $config: mat.define-legacy-typography-config();
+  }
+
+  @include time-select-typography($config);
+}
+
+@mixin mat-time-select-theme($theme) {
+  @include time-select-theme($theme);
+}

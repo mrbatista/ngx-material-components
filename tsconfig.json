@@ -7,6 +7,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
@@ -21,6 +22,9 @@
       ],
       "@mrbatista/mat-search-autocomplete": [
         "packages/search-autocomplete/dist"
+      ],
+      "@mrbatista/mat-time-select": [
+        "packages/time-select/dist"
       ]
     },
     "useDefineForClassFields": false

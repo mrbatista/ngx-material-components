@@ -184,6 +184,38 @@
           }
         }
       }
+    },
+    "@mrbatista/mat-time-select": {
+      "root": "packages/time-select",
+      "sourceRoot": "packages/time-select/src",
+      "projectType": "library",
+      "prefix": "mat",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "packages/time-select/tsconfig.lib.json",
+            "project": "packages/time-select/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "packages/time-select/src/test.ts",
+            "tsConfig": "packages/time-select/tsconfig.spec.json",
+            "karmaConfig": "packages/time-select/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/time-select/**/*.ts",
+              "packages/time-select/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "schematics": {

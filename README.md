@@ -10,7 +10,8 @@ All the components have the prefix `mat` followed by the package name.
 | Component           | Status    | package                 |
 | ------------------- | --------- | ----------------------- |
 | Loading Bar         | Available | mat-loading-bar         |
-| Search Autocomplete | Available | mat-searc-autocomplete  |
+| Search Autocomplete | Available | mat-search-autocomplete |
+| Time Select         | Available | mat-time-select         |
 
 If you miss any component, please follow the [CONTRIBUTION GUIDELINE](CONTRIBUTING.md) to open an issue.
 

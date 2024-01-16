@@ -8,6 +8,7 @@ import { appRoutes } from "./app.route";
 import { SearchAutocompleteModule } from "./autocomplete/search-autocomplete.module";
 import { HomeModule } from "./home/home.module";
 import { LoadingBarModule } from "./loading-bar/loading-bar.module";
+import { TimeSelectModule } from "./time-select/time-select.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { LoadingBarModule } from "./loading-bar/loading-bar.module";
     HomeModule,
     RouterModule.forRoot(appRoutes, {}),
     SearchAutocompleteModule,
+    TimeSelectModule,
   ],
   bootstrap: [AppComponent],
 })

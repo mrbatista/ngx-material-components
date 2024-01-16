@@ -1,0 +1,15 @@
+@import '../../lib/time-select.component-theme';
+
+
+// Include non-theme styles for core.
+$config: mat.define-legacy-typography-config();
+
+@include time-select-typography($config);
+
+// Define a theme.
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$theme: mat.define-light-theme($primary, $accent);
+
+@include time-select-theme($theme);
