@@ -4,18 +4,15 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  forwardRef,
+  EventEmitter,
   HostBinding,
   HostListener,
-  Inject,
   Input,
-  OnInit,
+  Output,
   ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
 import { mixinDisableRipple } from "@angular/material/core";
-
-import { MatTimeUnitSelectComponent } from "./time-unit-select.component";
 
 export class MatTimeUnitOptionBase {}
 // eslint-disable-next-line no-underscore-dangle
@@ -30,15 +27,12 @@ export const _MatTimeUnitOptionMixinBase: typeof MatTimeUnitOptionBase =
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MatTimeUnitOptionComponent<D>
-  extends _MatTimeUnitOptionMixinBase
-  implements OnInit
-{
+export class MatTimeUnitOptionComponent<D> extends _MatTimeUnitOptionMixinBase {
   private _disabled = false;
   private _selected = false;
 
   /** The value of the option. */
-  @Input() value: number;
+  @Input() value: D;
   /** Whether ripples for the option are disabled. */
   @Input() disableRipple: boolean;
 
@@ -86,19 +80,13 @@ export class MatTimeUnitOptionComponent<D>
     return this.disabled.toString();
   }
 
+  @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+
   constructor(
     private _elementRef: ElementRef<HTMLElement>,
     private _changeDetectorRef: ChangeDetectorRef,
-    @Inject(forwardRef(() => MatTimeUnitSelectComponent))
-    public timeUnitSelect: MatTimeUnitSelectComponent<D>,
   ) {
     super();
-  }
-
-  ngOnInit(): void {
-    this.timeUnitSelect.valueChange.subscribe(
-      (value) => (this.selected = this.value === value),
-    );
   }
 
   /** Gets the label to be used when determining whether the option should be focused. */
@@ -122,7 +110,7 @@ export class MatTimeUnitOptionComponent<D>
   @HostListener("click")
   _onClick(): void {
     if (!this.disabled) {
-      this.timeUnitSelect.move(this.value - this.timeUnitSelect.value);
+      this.selectedChange.emit(this.value);
     }
   }
 }

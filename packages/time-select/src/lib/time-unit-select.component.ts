@@ -156,4 +156,8 @@ export class MatTimeUnitSelectComponent<D> implements AfterViewInit, OnInit {
       (this.max === null || value <= this.max)
     );
   }
+
+  timeUnitChange(value: number): void {
+    this.move(value - this.value);
+  }
 }
