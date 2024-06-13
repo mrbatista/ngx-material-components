@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-loading-bar@0.4.4...@mrbatista/mat-loading-bar@0.4.5) (2024-06-13)
+
+**Note:** Version bump only for package @mrbatista/mat-loading-bar
+
 ## [0.4.4](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-loading-bar@0.4.3...@mrbatista/mat-loading-bar@0.4.4) (2024-01-09)
 
 **Note:** Version bump only for package @mrbatista/mat-loading-bar
