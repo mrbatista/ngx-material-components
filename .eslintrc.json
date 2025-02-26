@@ -29,7 +29,12 @@
         ],
         "@typescript-eslint/no-unused-vars": [
           "error",
-          { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
         ],
         "@typescript-eslint/explicit-module-boundary-types": [
           "error"
