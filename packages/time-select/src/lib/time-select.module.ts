@@ -3,10 +3,10 @@ import { OverlayModule } from "@angular/cdk/overlay";
 import { PortalModule } from "@angular/cdk/portal";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatRippleModule } from "@angular/material/core";
 import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
 
 import {
   MAT_TIME_SELECT_SCROLL_STRATEGY_FACTORY_PROVIDER,

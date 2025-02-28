@@ -35,6 +35,11 @@ import {
   UntypedFormControl,
 } from "@angular/forms";
 import {
+  MatAutocomplete,
+  MatAutocompleteOrigin,
+  MatAutocompleteSelectedEvent,
+} from "@angular/material/autocomplete";
+import {
   _AbstractConstructor,
   _Constructor,
   CanUpdateErrorState,
@@ -42,15 +47,10 @@ import {
   mixinErrorState,
 } from "@angular/material/core";
 import {
-  MatLegacyAutocomplete as MatAutocomplete,
-  MatLegacyAutocompleteOrigin as MatAutocompleteOrigin,
-  MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent,
-} from "@angular/material/legacy-autocomplete";
-import {
-  MatLegacyFormField as MatFormField,
-  MatLegacyFormFieldControl as MatFormFieldControl,
-} from "@angular/material/legacy-form-field";
-import { MatLegacyInput as MatInput } from "@angular/material/legacy-input";
+  MatFormField,
+  MatFormFieldControl,
+} from "@angular/material/form-field";
+import { MatInput } from "@angular/material/input";
 import { Observable, Subject } from "rxjs";
 import {
   debounceTime,

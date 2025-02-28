@@ -1,33 +1,45 @@
 <ng-container>
-  <input matInput #autocompleteInput="matInput"
-         *ngIf="formControl"
-         [placeholder]="placeholder"
-         [formControl]="formControl"
-         [matAutocomplete]="autocomplete"
-         [matAutocompleteConnectedTo]="autocompleteConnectedTo"
-         (focus)="onFocus()">
-  <input matInput #autocompleteInput="matInput"
-         *ngIf="!formControl"
-         [placeholder]="placeholder"
-         [matAutocomplete]="autocomplete"
-         [matAutocompleteConnectedTo]="autocompleteConnectedTo"
-         (focus)="onFocus()">
-  <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+  @if (formControl) {
+    <input matInput #autocompleteInput="matInput"
+      [placeholder]="placeholder"
+      [formControl]="formControl"
+      [matAutocomplete]="autocomplete"
+      [matAutocompleteConnectedTo]="autocompleteConnectedTo"
+      (focus)="onFocus()">
+  }
+  @if (!formControl) {
+    <input matInput #autocompleteInput="matInput"
+      [placeholder]="placeholder"
+      [matAutocomplete]="autocomplete"
+      [matAutocompleteConnectedTo]="autocompleteConnectedTo"
+      (focus)="onFocus()">
+  }
+  @if (showProgressBar) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
   <mat-autocomplete #autocomplete="matAutocomplete"
-                    [displayWith]="autocompleteDisplayFn"
-                    (optionSelected)="autocompleteSelected($event)">
-    <mat-option *ngFor="let item of autocompleteList | async" [value]="item">
-      <ng-template [ngIf]="displayTemplate">
-        <ng-container *ngTemplateOutlet="displayTemplate; context: {$implicit: item}"></ng-container>
-      </ng-template>
-      <span *ngIf="!displayTemplate">{{ viewItem(item) }}</span>
-    </mat-option>
-    <mat-option *ngIf="showOptionNoSuggestions" disabled>
-      <span>{{ noSuggestionsText }}</span>
-    </mat-option>
-    <mat-option *ngIf="showOptionCreateNew" (click)="onCreateNew($event)">
-      <mat-icon>add</mat-icon>
-      <span> {{ addNewText }} </span>
-    </mat-option>
+    [displayWith]="autocompleteDisplayFn"
+    (optionSelected)="autocompleteSelected($event)">
+    @for (item of autocompleteList | async; track item) {
+      <mat-option [value]="item">
+        @if (displayTemplate) {
+          <ng-container *ngTemplateOutlet="displayTemplate; context: {$implicit: item}"></ng-container>
+        }
+        @if (!displayTemplate) {
+          <span>{{ viewItem(item) }}</span>
+        }
+      </mat-option>
+    }
+    @if (showOptionNoSuggestions) {
+      <mat-option disabled>
+        <span>{{ noSuggestionsText }}</span>
+      </mat-option>
+    }
+    @if (showOptionCreateNew) {
+      <mat-option (click)="onCreateNew($event)">
+        <mat-icon>add</mat-icon>
+        <span> {{ addNewText }} </span>
+      </mat-option>
+    }
   </mat-autocomplete>
 </ng-container>

@@ -4,7 +4,9 @@
   </button>
   <div class="mat-time-unit-select-mask">
     <div #panel class="mat-time-unit-select-panel">
-      <mat-time-unit-option *ngFor="let option of options" [selected]="option.value === value" [value]="option.value" (selectedChange)="timeUnitChange($event)" [disabled]="!isValid(option.value)"> {{ option.label }} </mat-time-unit-option>
+      @for (option of options; track option) {
+        <mat-time-unit-option [selected]="option.value === value" [value]="option.value" (selectedChange)="timeUnitChange($event)" [disabled]="!isValid(option.value)"> {{ option.label }} </mat-time-unit-option>
+      }
     </div>
   </div>
   <button class="mat-time-unit-select-arrow mat-time-unit-select-next" mat-icon-button aria-label="Next" [disabled]="!isValid(getNext())" (click)="next()">

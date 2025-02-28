@@ -28,11 +28,11 @@
     }
   },
   "peerDependencies": {
-    "@angular/animations": "^15.0.0 || ^16.0.0",
-    "@angular/cdk": "^15.0.0 || ^16.0.0",
-    "@angular/common": "^15.0.0 || ^16.0.0",
-    "@angular/core": "^15.0.0 || ^16.0.0",
-    "@angular/material": "^15.0.0 || ^16.0.0",
+    "@angular/animations": "^17.0.0",
+    "@angular/cdk": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/material": "^17.0.0",
     "moment": "^2.24.0"
   }
 }

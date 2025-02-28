@@ -13,16 +13,17 @@
   />
 </div>
 
-<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24px">
-  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
+<div class="flex-column">
+  <div class="flex flex-row justify-center justify-items-center gap-8 pb-4">
     <button mat-raised-button (click)="promise()">Start promise</button>
     <button mat-raised-button (click)="observable()">Start observable</button>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
+  <div class="flex flex-row justify-center justify-items-center gap-8">
     <mat-checkbox [(ngModel)]="backdrop">Backdrop</mat-checkbox>
     <mat-checkbox [(ngModel)]="showAlways">Show always</mat-checkbox>
   </div>
-  <mat-radio-group [(ngModel)]="color" fxLayoutGap="24px">
+  <mat-radio-group class="flex flex-row justify-center justify-items-center gap-8"
+    [(ngModel)]="color">
     <mat-radio-button value="primary">primary</mat-radio-button>
     <mat-radio-button value="accent">accent</mat-radio-button>
     <mat-radio-button value="warn">warn</mat-radio-button>
