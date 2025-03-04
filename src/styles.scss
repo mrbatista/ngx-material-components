@@ -9,11 +9,11 @@
 
 @include mat.core();
 
-$primary: mat.define-palette(mat.$purple-palette, 500);
-$accent:  mat.define-palette(mat.$lime-palette, 500, A200, A400);
-$warn:    mat.define-palette(mat.$red-palette, 500);
+$primary: mat.m2-define-palette(mat.$m2-purple-palette, 500);
+$accent:  mat.m2-define-palette(mat.$m2-lime-palette, 500, A200, A400);
+$warn:    mat.m2-define-palette(mat.$m2-red-palette, 500);
 
-$theme: mat.define-light-theme((color: (primary: $primary, accent: $accent, warn: $warn)));
+$theme: mat.m2-define-light-theme((color: (primary: $primary, accent: $accent, warn: $warn)));
 
 @include mat.all-component-themes($theme);
 
