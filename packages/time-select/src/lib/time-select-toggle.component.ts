@@ -16,7 +16,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
-import { MatLegacyButton as MatButton } from "@angular/material/legacy-button";
+import { MatButton } from "@angular/material/button";
 import { merge, of, Subscription } from "rxjs";
 
 import { MatTimeSelectComponent } from "./time-select.component";
