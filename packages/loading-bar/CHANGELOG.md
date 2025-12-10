@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.1.0](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-loading-bar@0.4.5...@mrbatista/mat-loading-bar@18.1.0) (2025-12-10)
+
+### Features
+
+- add isLoading input for long live observable ([156890f](https://github.com/mrbatista/ngx-material-components/commit/156890f9adf8865db0967cce8c4e871806716af7))
+- update angular 17 ([500d365](https://github.com/mrbatista/ngx-material-components/commit/500d36527783e035673bc5e06615dda5942ab8f1))
+- update angular 18 ([f6c1790](https://github.com/mrbatista/ngx-material-components/commit/f6c1790b81b4f92cfc56dfbafa5f5b2ccb62fc7d))
+
+### Reverts
+
+- Revert "chore: add angular 14 as peer deps" ([eaebf53](https://github.com/mrbatista/ngx-material-components/commit/eaebf53e67c5a22e8233cbe8b31b48430fa9249c))
+
 ## [0.4.5](https://github.com/mrbatista/ngx-material-components/compare/@mrbatista/mat-loading-bar@0.4.4...@mrbatista/mat-loading-bar@0.4.5) (2024-06-13)
 
 **Note:** Version bump only for package @mrbatista/mat-loading-bar
