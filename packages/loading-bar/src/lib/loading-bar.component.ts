@@ -5,7 +5,8 @@ import {
   Input,
   OnDestroy,
 } from "@angular/core";
-import { Observable, Subject, Subscription } from "rxjs";
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: "mat-loading-bar",
@@ -51,7 +52,7 @@ export class MatLoadingBarComponent implements OnDestroy {
   @Input() backdrop = false;
   @Input() color = "primary";
 
-  active$ = new Subject<boolean>();
+  active$ = new BehaviorSubject<boolean>(false);
   mode: progressBarMode = "determinate";
   subscription: Subscription;
 
@@ -64,6 +65,13 @@ export class MatLoadingBarComponent implements OnDestroy {
       this.initObservableHandler(value as Observable<unknown>);
     } else if (isPromise) {
       this.initPromiseHandler(value as Promise<unknown>);
+    }
+  }
+
+  @Input()
+  set isLoading(value: Observable<boolean>) {
+    if (value instanceof Observable) {
+      this.initLoadingStatusObservable(value);
     }
   }
 
@@ -101,6 +109,16 @@ export class MatLoadingBarComponent implements OnDestroy {
         this.subscription.unsubscribe();
       },
     });
+  }
+
+  initLoadingStatusObservable(observable: Observable<boolean>): void {
+    this.subscription = observable
+      .pipe(tap((value) => console.log(value)))
+      .subscribe({
+        next: (isLoading) =>
+          isLoading ? this.initLoadingState() : this.cancelLoadingState(),
+        error: () => this.cancelLoadingState(),
+      });
   }
 }
 

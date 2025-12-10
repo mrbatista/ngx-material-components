@@ -1,5 +1,6 @@
 <mat-loading-bar
   [loader]="loader"
+  [isLoading]="isLoading"
   [showAlways]="showAlways"
   [color]="color"
   [backdrop]="backdrop"
@@ -16,7 +17,8 @@
 <div class="flex-column">
   <div class="flex flex-row justify-center justify-items-center gap-8 pb-4">
     <button mat-raised-button (click)="promise()">Start promise</button>
-    <button mat-raised-button (click)="observable()">Start observable</button>
+    <button mat-raised-button (click)="shortLiveObservable()">Start observable http api call</button>
+    <button mat-raised-button (click)="longLiveObservable()">Start long live observable</button>
   </div>
   <div class="flex flex-row justify-center justify-items-center gap-8">
     <mat-checkbox [(ngModel)]="backdrop">Backdrop</mat-checkbox>

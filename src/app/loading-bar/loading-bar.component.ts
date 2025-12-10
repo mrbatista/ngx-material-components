@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { concat, Observable, of } from "rxjs";
 import { delay } from "rxjs/operators";
 
 @Component({
@@ -12,6 +12,7 @@ export class LoadingBarComponent {
   backdrop: boolean;
   color = "primary";
   loader: Promise<unknown> | Observable<unknown>;
+  isLoading: Observable<boolean>;
 
   promise(): void {
     this.loader = new Promise((resolve) =>
@@ -19,7 +20,11 @@ export class LoadingBarComponent {
     );
   }
 
-  observable(): void {
+  shortLiveObservable(): void {
     this.loader = of("string").pipe(delay(2000));
+  }
+
+  longLiveObservable(): void {
+    this.isLoading = concat(of(true), of(false).pipe(delay(2000)));
   }
 }
