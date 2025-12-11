@@ -113,7 +113,6 @@ export class MatLoadingBarComponent implements OnDestroy {
 
   initLoadingStatusObservable(observable: Observable<boolean>): void {
     this.subscription = observable
-      .pipe(tap((value) => console.log(value)))
       .subscribe({
         next: (isLoading) =>
           isLoading ? this.initLoadingState() : this.cancelLoadingState(),
